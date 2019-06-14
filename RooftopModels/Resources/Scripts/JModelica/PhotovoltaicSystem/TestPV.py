@@ -3,7 +3,7 @@ import os, sys
 homeDir = os.environ['HOMEPATH']
 jmodDir = os.environ['JMODELICA_HOME']
 workDir = "Desktop" # has to be adapted by the user !!!
-moLiDir = os.path.join(homeDir, workDir, "Rooftop_Reference")
+moLiDir = os.path.join(homeDir, workDir, "RooftopIDP")
 
 # give the path to directory where package.mo is stored
 moLibs = [os.path.join(jmodDir, "ThirdParty\MSL\Modelica"),
