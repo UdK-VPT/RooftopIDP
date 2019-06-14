@@ -44,10 +44,11 @@ res = myModel.simulate(start_time=0.0, final_time=31536000.0, options=opts)
 # <codecell> plotting of the results
 import pylab as P
 fig = P.figure(1)
+P.clf()
 # PV generator
 y1 = res['pvSystem.PGen']
 t = res['time']
-P.subplot(3,1,1)
+P.subplot(4,1,1)
 P.plot(t, y1)
 P.legend(['pvSystem.PGen'])
 P.ylabel('Power (W)')
@@ -59,7 +60,7 @@ y2 = res['pvSystem.pvFacadeSouth1.PField']
 y3 = res['pvSystem.pvRoofNorth1.PField']
 y4 = res['pvSystem.pvFacadeNorth1.PField']
 t = res['time']
-P.subplot(3,1,2)
+P.subplot(4,1,2)
 P.plot(t, y1, t, y2, t, y3, t, y4)
 P.legend(['pvSystem.pvFacadeSouth1.PField','pvSystem.pvFacadeSouth1.PField','pvSystem.pvRoofNorth1.PField','pvSystem.pvFacadeNorth1.PField'])
 P.ylabel('Power (W)')
@@ -69,9 +70,17 @@ y1 = res['pvSystem.pvFacadeSouth1.angleDegTil']
 y2 = res['pvSystem.pvRoofSouth1.angleDegTil']
 y3 = res['pvSystem.pvRoofNorth1.angleDegTil']
 y4 = res['pvSystem.pvFacadeNorth1.angleDegTil']
-P.subplot(3,1,3)
+P.subplot(4,1,3)
 P.plot(t, y1, t, y2, t, y3, t, y4)
 P.legend(['pvSystem.pvFacadeSouth1.angleDegTil','pvSystem.pvRoofSouth1.angleDegTil','pvSystem.pvRoofNorth1.angleDegTil','pvSystem.pvFacadeNorth1.angleDegTil'])
+P.ylabel('angle (degree)')
+P.xlabel('Time (s)')
+# battery
+y1 = res['battery.SOC']
+t = res['time']
+P.subplot(4,1,4)
+P.plot(t, y1)
+P.legend(['battery.SOC'])
 P.ylabel('angle (degree)')
 P.xlabel('Time (s)')
 P.show()
